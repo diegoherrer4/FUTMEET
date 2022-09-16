@@ -11433,10 +11433,16 @@ html {
 .masthead {
   padding-top: calc(6rem + 74px);
   padding-bottom: 6rem;
+  background-image: url(../imgs/headerbkg.jpg);
+  backdrop-filter: blur(10px);
+  background-size:cover;
+  background-repeat: no-repeat;
+  
 }
 .masthead .masthead-heading {
   font-size: 2.75rem;
   line-height: 2.75rem;
+ 
 }
 .masthead .masthead-subheading {
   font-size: 1.25rem;
@@ -11448,6 +11454,7 @@ html {
 -moz-filter: blur(0px); 
 -ms-filter: blur(0px);
 filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='0');
+
 }
 
 @media (min-width: 992px) {
