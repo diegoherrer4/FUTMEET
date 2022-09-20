@@ -7,7 +7,6 @@ const EventSchema = new mongoose.Schema({
   },
   location: {
     type: String,
-    required: true,
   },
   image: {
     type: String,
@@ -15,7 +14,7 @@ const EventSchema = new mongoose.Schema({
   },
   cloudinaryId: {
     type: String,
-    require: true,
+
   },
   description: {
     type: String,

@@ -26,6 +26,15 @@ module.exports = {
       console.log(err);
     }
   },
+
+  getCreateEvent: async (req, res) => {
+    try {
+      const event = await Event.findById(req.params.id);
+      res.render("createEvent.ejs", { event: event, user: req.user });
+    } catch (err) {
+      console.log(err);
+    }
+  },
   createEvent: async (req, res) => {
     try {
       // Upload image to cloudinary
