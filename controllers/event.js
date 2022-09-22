@@ -18,28 +18,30 @@ module.exports = {
       console.log(err);
     }
   },
-  getPost: async (req, res) => {
+  getEvent: async (req, res) => {
     try {
-      const post = await Post.findById(req.params.id);
-      res.render("post.ejs", { post: post, user: req.user });
+      const event = await Event.findById(req.params.id);
+      res.render("event.ejs", { event: event, user: req.user });
     } catch (err) {
       console.log(err);
     }
   },
-  createPost: async (req, res) => {
+  createEvent: async (req, res) => {
     try {
       // Upload image to cloudinary
       const result = await cloudinary.uploader.upload(req.file.path);
 
       await Post.create({
         title: req.body.title,
+        location: req.body.location,
         image: result.secure_url,
         cloudinaryId: result.public_id,
-        caption: req.body.caption,
-        likes: 0,
+        description: req.body.description,
+        Going: 0,
         user: req.user.id,
+        date: ""
       });
-      console.log("Post has been added!");
+      console.log("Event has been added!");
       res.redirect("/profile");
     } catch (err) {
       console.log(err);

@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
-const PostSchema = new mongoose.Schema({
+const EventSchema = new mongoose.Schema({
   title: {
+    type: String,
+    required: true,
+  },
+  location: {
     type: String,
     required: true,
   },
@@ -17,7 +21,7 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  Going: {
+  going: {
     type: Number,
     required: true,
   },
@@ -25,9 +29,9 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  DateOfEvent: {
+  date: {
     type: Date,
   },
 });
 
-module.exports = mongoose.model("Event", PostSchema);
+module.exports = mongoose.model("Event", EventSchema);
