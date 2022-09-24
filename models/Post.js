@@ -7,17 +7,17 @@ const PostSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    require: true,
+    default: 'imgs/headerbkg.jpg'
   },
   cloudinaryId: {
     type: String,
     require: true,
   },
-  caption: {
+  description: {
     type: String,
     required: true,
   },
-  likes: {
+  Going: {
     type: Number,
     required: true,
   },
@@ -25,10 +25,9 @@ const PostSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  createdAt: {
+  DateOfEvent: {
     type: Date,
-    default: Date.now,
   },
 });
 
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Event", PostSchema);
