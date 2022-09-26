@@ -13,7 +13,7 @@ module.exports = {
   getAllEvents: async (req, res) => {
     try {
       const events = await Event.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { events: events });
+      res.render("feed.ejs", { events: events, user: req.user });
     } catch (err) {
       console.log(err);
     }

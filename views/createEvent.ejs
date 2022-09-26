@@ -9,11 +9,11 @@
             <form action="/event/createEvent" enctype="multipart/form-data" method="POST">
               <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
-                  <input type="text" class="form-control" id="title" name="title">
+                  <input type="text" class="form-control" id="title" name="title" placeholder="5v5 Pick-up game">
               </div>
               <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
-                <input type="text" class="form-control" id="location" name="location">
+                <input type="text" class="form-control" id="location" name="location" placeholder="1234 Graham Rd, Brandon, FL, 33511">
             </div>
             <div class="mb-3">
               <label for="date" class="form-label">Date</label>
@@ -21,7 +21,7 @@
           </div>
               <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description"></textarea>
+                <textarea class="form-control" id="description" name="description" placeholder="Limit of Players: 10, bring white and black t-shirt, etc"></textarea>
               </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
             </form>
@@ -29,4 +29,6 @@
       </div>
     </div>
   </div> 
+
+  <script src="/js/createEvent.js"></script>
    
