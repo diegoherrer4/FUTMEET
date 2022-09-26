@@ -18,19 +18,18 @@ module.exports = {
       console.log(err);
     }
   },
-  getEvent: async (req, res) => {
-    try {
-      const event = await Event.findById(req.params.id);
-      res.render("event.ejs", { event: event, user: req.user });
-    } catch (err) {
-      console.log(err);
-    }
-  },
+  // getEvent: async (req, res) => {
+  //   try {
+  //     const event = await Event.findById(req.params.id);
+  //     res.render("event.ejs", { event: event, user: req.user });
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // },
 
   getCreateEvent: async (req, res) => {
     try {
-      const event = await Event.findById(req.params.id);
-      res.render("createEvent.ejs", { event: event, user: req.user });
+      res.render("createEvent.ejs");
     } catch (err) {
       console.log(err);
     }

@@ -3,26 +3,18 @@ const mongoose = require("mongoose");
 const EventSchema = new mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    // required: true,
   },
   location: {
     type: String,
   },
-  image: {
-    type: String,
-    default: 'imgs/headerbkg.jpg'
-  },
-  cloudinaryId: {
-    type: String,
-
-  },
   description: {
     type: String,
-    required: true,
+    // required: true,
   },
   going: {
     type: Number,
-    required: true,
+    // required: true,
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
