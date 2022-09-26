@@ -1,17 +1,19 @@
 <%- include('partials/header') -%>
       <div class="col-6">
         <h1>My events</h1>
+        <div class="justify-content-center mt-5">
+          <a class="btn btn-primary" href="/event/createEvent">Create new event</a>
+        </div>  
         <%# Shows events I have created %>
         <ul class="row list-unstyled">
         <% for(var i=0; i<events.length; i++) {%>
-          <li class="col-6 justify-content-between mt-5">
-            <a href="/event/<%= events[i]._id%>">
-              <img class="img-fluid" src="<%= events[i].image%>">
-            </a>
+          <li class="col-3 justify-content-between mt-4">
+            <a href="/event/<%= events[i]._id%>"> <%= events[i].title%> </a>
+            <%= helper.dateFormatter(events[i].eventDate) %> 
           </li>
         <% } %>
         </ul>
-        <div class="row justify-content-center mt-5">
+        <div class="justify-content-center mt-5">
           <a class="btn btn-primary" href="/feed">Return to Feed</a>
         </div>  
       </div>  

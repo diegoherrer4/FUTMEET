@@ -1,11 +1,12 @@
-const cloudinary = require("../middleware/cloudinary");
 const Event = require("../models/Event");
+const helper = require("../public/js/dateFormat")
 
 module.exports = {
   getProfile: async (req, res) => {
     try {
       const events = await Event.find({ user: req.user.id });
-      res.render("profile.ejs", { events: events, user: req.user });
+
+      res.render("profile.ejs", { events: events, user: req.user, helper: helper });
     } catch (err) {
       console.log(err);
     }
@@ -13,7 +14,7 @@ module.exports = {
   getAllEvents: async (req, res) => {
     try {
       const events = await Event.find().sort({ createdAt: "desc" }).lean();
-      res.render("feed.ejs", { events: events, user: req.user });
+      res.render("feed.ejs", { events: events, user: req.user, helper: helper});
     } catch (err) {
       console.log(err);
     }
@@ -36,18 +37,14 @@ module.exports = {
   },
   createEvent: async (req, res) => {
     try {
-      // Upload image to cloudinary
-      const result = await cloudinary.uploader.upload(req.file.path);
-
       await Event.create({
         title: req.body.title,
         location: req.body.location,
-        image: result.secure_url,
-        cloudinaryId: result.public_id,
         description: req.body.description,
-        Going: 0,
+        playerslimit: req.body.playerslimit,
+        going: 1,
         user: req.user.id,
-        date: ""
+        eventDate: req.body.date
       });
       console.log("Event has been added!");
       res.redirect("/profile");
@@ -73,8 +70,6 @@ module.exports = {
     try {
       // Find event by id
       let event = await Event.findById({ _id: req.params.id });
-      // Delete image from cloudinary
-      await cloudinary.uploader.destroy(event.cloudinaryId);
       // Delete event from db
       await Event.remove({ _id: req.params.id });
       console.log("Deleted event");

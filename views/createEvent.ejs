@@ -6,7 +6,7 @@
       <div class="col-6">
           <div class="mt-5">
             <h2>Add an event</h2>
-            <form action="/event/createEvent" enctype="multipart/form-data" method="POST">
+            <form action="/event/createEvent" enctype="application/x-www-form-urlencoded" method="POST">
               <div class="mb-3">
                   <label for="title" class="form-label">Title</label>
                   <input type="text" class="form-control" id="title" name="title" placeholder="5v5 Pick-up game">
@@ -14,15 +14,19 @@
               <div class="mb-3">
                 <label for="location" class="form-label">Location</label>
                 <input type="text" class="form-control" id="location" name="location" placeholder="1234 Graham Rd, Brandon, FL, 33511">
-            </div>
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Bring white and black t-shirt"></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="playerslimit" class="form-label">Max number of players</label>
+                <input type="number" class="form-control" id="playerslimit" name="playerslimit">
+              </div>
             <div class="mb-3">
               <label for="date" class="form-label">Date</label>
               <input type="date" class="form-control" id="date" name="date">
           </div>
-              <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" placeholder="Limit of Players: 10, bring white and black t-shirt, etc"></textarea>
-              </div>
               <button type="submit" class="btn btn-primary" value="Upload">Submit</button>
             </form>
           </div>
