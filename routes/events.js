@@ -4,14 +4,15 @@ const upload = require("../middleware/multer");
 const eventsController = require("../controllers/events");
 const { ensureAuth, ensureGuest } = require("../middleware/auth");
 
-// //Event Routes - simplified for now
-// router.get("/:id", ensureAuth, eventsController.getEvent);
 
-router.get("/createEvent", ensureAuth, eventsController.getCreateEvent);
+// //Event Routes - simplified for now
+router.get("/createEventPage", ensureAuth, eventsController.getCreateEvent);
+
+router.get("/:id", ensureAuth, eventsController.getEvent);
 
 router.post("/createEvent", eventsController.createEvent);
 
-router.put("/playersGoing/:id", eventsController.playersGoing);
+router.put("/going/:id", eventsController.playersGoing);
 
 router.delete("/deleteEvent/:id", eventsController.deleteEvent);
 

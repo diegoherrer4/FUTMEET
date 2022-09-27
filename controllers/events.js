@@ -19,18 +19,18 @@ module.exports = {
       console.log(err);
     }
   },
-  // getEvent: async (req, res) => {
-  //   try {
-  //     const event = await Event.findById(req.params.id);
-  //     res.render("event.ejs", { event: event, user: req.user });
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // },
+  getEvent: async (req, res) => {
+    try {
+      const event = await Event.findById(req.params.id);
+      res.render("event.ejs", { event: event, user: req.user, helper: helper });
+    } catch (err) {
+      console.log(err);
+    }
+  },
 
   getCreateEvent: async (req, res) => {
     try {
-      res.render("createEvent.ejs");
+      res.render("createEventPage.ejs");
     } catch (err) {
       console.log(err);
     }
@@ -44,7 +44,8 @@ module.exports = {
         playerslimit: req.body.playerslimit,
         going: 1,
         user: req.user.id,
-        eventDate: req.body.date
+        eventDate: req.body.date,
+        eventTime: req.body.time
       });
       console.log("Event has been added!");
       res.redirect("/profile");
@@ -69,9 +70,9 @@ module.exports = {
   deleteEvent: async (req, res) => {
     try {
       // Find event by id
-      let event = await Event.findById({ _id: req.params.id });
+      await Event.findById({ _id: req.params.id });
       // Delete event from db
-      await Event.remove({ _id: req.params.id });
+      await Event.deleteOne({ _id: req.params.id });
       console.log("Deleted event");
       res.redirect("/profile");
     } catch (err) {

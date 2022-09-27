@@ -1,37 +1,40 @@
-<%- include('partials/header') -%>
+<%- include('partials/event-header') -%>
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <h2><%= event.title %></h2>
-      <img class="img-fluid" src="<%= event.image%>" />
+        <p><%= event.description %></p>
+        <span> <%=event.location %></span>
+        <br>
+        <span> Event Date: <%= helper.dateFormatter(event.eventDate) %> <br> Event Time: <%= helper.timeFormatter(event.eventTime) %></span>
+        <br>
+        <span> Player Limit: <%=event.playerslimit %></span>
+        <br>
+        <span> Players Going: <%=event.going %></span>
       <div class="row justify-content-between">
-        <form
-          class="col-1"
-          action="/event/likeevent/<%= event.id %>?_method=PUT"
-          method="POST"
-        >
-          <button class="btn btn-primary fa fa-heart" type="submit"></button>
+
+        <%#Going button %>
+        <form class="col-1" action="/event/going/<%= event.id %>?_method=PUT" method="POST">
+          <button class="btn btn-primary fa fa-check" type="submit"></button>
         </form>
-        <h3 class="col-3">Likes: <%= event.likes %></h3>
+
+
+        <%#Delete button %>
         <%if(event.user == user.id){ %>
-        <form
-          action="/event/deleteevent/<%= event.id %>?_method=DELETE"
-          method="POST"
-          class="col-3"
-        >
+        <form action="/event/deleteevent/<%= event.id %>?_method=DELETE" method="POST" class="col-3">
           <button class="btn btn-primary fa fa-trash" type="submit"></button>
         </form>
         <%}%>
+
+
+
       </div>
     </div>
-    <div class="col-3 mt-5">
-      <p><%= event.caption %></p>
-    </div>
-    <div class="col-6 mt-5">
-      <a class="btn btn-primary" href="/profile">Return to Profile</a>
-      <a class="btn btn-primary" href="/feed">Return to Feed</a>
+      <div class="col-6 mt-5">
+        <a class="btn btn-primary" href="/profile">Go to Profile</a>
+        <a class="btn btn-primary" href="/feed">Return to All events</a>
+      </div>
     </div>
   </div>
-</div>
 
-<%- include('partials/footer') -%>
+  <%- include('partials/footer') -%>

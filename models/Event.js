@@ -9,6 +9,7 @@ const EventSchema = new mongoose.Schema({
   going: { type: Number, required: true },
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   eventDate: { type: Date, required: true },
+  eventTime: {type: String, required: true},
   createdAt: { type: Date, default: Date.now }
 });
 
