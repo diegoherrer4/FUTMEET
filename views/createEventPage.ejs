@@ -1,6 +1,6 @@
 <%#Copy of profile for now%>
 
-
+<%- include('partials/feed-header') -%>
 <div class="container">
   <div class="row mt-5">
       <div class="col-6">
@@ -21,7 +21,7 @@
               </div>
               <div class="mb-3">
                 <label for="playerslimit" class="form-label">Max number of players</label>
-                <input type="number" class="form-control" id="playerslimit" name="playerslimit">
+                <input type="number" min="1" max="100" class="form-control" id="playerslimit" name="playerslimit">
               </div>
             <div class="mb-3">
               <label for="date" class="form-label">Date</label>

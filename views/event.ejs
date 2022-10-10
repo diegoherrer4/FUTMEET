@@ -1,16 +1,17 @@
-<%- include('partials/event-header') -%>
+<%- include('partials/feed-header') -%>
 <div class="container">
   <div class="row justify-content-center mt-5">
     <div class="col-6">
       <h2><%= event.title %></h2>
-        <p><%= event.description %></p>
-        <span> <%=event.location %></span>
-        <br>
-        <span> Event Date: <%= helper.dateFormatter(event.eventDate) %> <br> Event Time: <%= helper.timeFormatter(event.eventTime) %></span>
-        <br>
-        <span> Player Limit: <%=event.playerslimit %></span>
-        <br>
-        <span> Players Going: <%=event.going %></span>
+      <p><%= event.description %></p>
+      <span> <%=event.location %></span>
+      <br>
+      <span> Event Date: <%= helper.dateFormatter(event.eventDate) %> <br> Event Time:
+        <%= helper.timeFormatter(event.eventTime) %></span>
+      <br>
+      <span> Player Limit: <%=event.playerslimit %></span>
+      <br>
+      <span> Players Going: <%=event.going %></span>
       <div class="row justify-content-between">
 
         <%#Going button %>
@@ -30,11 +31,5 @@
 
       </div>
     </div>
-      <div class="col-6 mt-5">
-        <a class="btn btn-primary" href="/profile">Go to Profile</a>
-        <a class="btn btn-primary" href="/feed">Return to All events</a>
-      </div>
     </div>
   </div>
-
-  <%- include('partials/footer') -%>
