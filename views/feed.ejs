@@ -14,15 +14,17 @@ crossorigin="anonymous"
 />
 </head>
 <%- include('partials/feed-header') -%>
-
+          <div class="d-flex flex-column justify-content-center align-items-center">
+            <h1 class="font-weight-bold text-dark text-lg-center solid_line">All Events</h1> 
           <ul class="list">
               <% for(var i=0; i<events.length; i++) {%>
                 <li class="item">
                   <a href="/event/<%= events[i]._id%>" class="headline">
                     <%= events[i].title%>
                   </a>
-                  <%= helper.dateFormatter(events[i].eventDate) %> 
+                  <p class="font-weight-bold text-dark text-lg justify-content-start" ><strong><%= helper.dateFormatter(events[i].eventDate) %></strong> </p>
                 </li>
               <% } %>
               </ul>
+            </div>
 <%- include('partials/footer') -%>
