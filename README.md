@@ -1,5 +1,5 @@
 # FUTMEET
-Soccer Meetup Website
+Soccer Meetup Website with Auth
 
 **Link to project:** https://futmeet.herokuapp.com/
 
@@ -27,6 +27,7 @@ No matter what your experience level, being an engineer means continuously learn
 - How to use set up views with EJS
 - Routing with express 
 - How to save data in a mongodb database
+- Authentication with Passport
 
 
 
