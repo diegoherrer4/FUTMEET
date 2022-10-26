@@ -3,7 +3,7 @@ Soccer Meetup Website
 
 **Link to project:** https://futmeet.herokuapp.com/
 
-![alt tag](http://futmeet.herokuapp.com/1200/650)
+![alt tag](./FUTMEET.png)
 
 ## How It's Made:
 
