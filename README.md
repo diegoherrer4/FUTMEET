@@ -1,5 +1,5 @@
 # FUTMEET
-Soccer Meetup Website with Auth
+Full Stack Soccer Meetup Website with Auth
 
 **Link to project:** https://futmeet.herokuapp.com/
 
