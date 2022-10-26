@@ -12,7 +12,6 @@ Soccer Meetup Website
 I built this full-stack website with the idea of creating a site where local amateur soccer players can meet anywhere and play whenever. Soccer is one of my favorite sports, and have always find it hard to find people to play with. 
 
 ## Optimizations
-*(optional)*
 
 Needed optimizations: 
 - Make event form responsive
