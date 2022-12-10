@@ -9,7 +9,7 @@ const flash = require("express-flash");
 const logger = require("morgan");
 const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
-const postRoutes = require("./routes/posts");
+const eventRoutes = require("./routes/events");
 
 //Use .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
@@ -24,7 +24,7 @@ connectDB();
 app.set("view engine", "ejs");
 
 //Static Folder
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 
 //Body Parsing
 app.use(express.urlencoded({ extended: true }));
@@ -55,9 +55,29 @@ app.use(flash());
 
 //Setup Routes For Which The Server Is Listening
 app.use("/", mainRoutes);
-app.use("/post", postRoutes);
+app.use("/event", eventRoutes);
+
+//404 Route
+app.use(function(req, res, next) {
+  res.status(404);
+
+  // respond with html page
+  if (req.accepts('html')) {
+    res.render('404', { url: req.url });
+    return;
+  }
+
+  // respond with json
+  if (req.accepts('json')) {
+    res.json({ error: 'Not found' });
+    return;
+  }
+
+  // default to plain-text. send()
+  res.type('txt').send('Not found');
+});
 
 //Server Running
 app.listen(process.env.PORT, () => {
-  console.log("Server is running, you better catch it!");
+  console.log(`Server is running on ${process.env.PORT}, you better catch it!`);
 });
