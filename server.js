@@ -1,36 +1,46 @@
 const express = require("express");
+//create instance of express application
 const app = express();
+//object modeling tool which interacts with database
 const mongoose = require("mongoose");
+//import passport which deals with authentication
 const passport = require("passport");
+// store session data on the server
 const session = require("express-session");
+//store session data in database.
 const MongoStore = require("connect-mongo")(session);
+//override HTTP methods in the application.
 const methodOverride = require("method-override");
+//show flash messages in the application.
 const flash = require("express-flash");
+//logs the requests and responses in the application.
 const logger = require("morgan");
 const connectDB = require("./config/database");
+//import routes for which the server will be listening
 const mainRoutes = require("./routes/main");
 const eventRoutes = require("./routes/events");
 
-//Use .env file in config folder
+//import .env file in config folder
 require("dotenv").config({ path: "./config/.env" });
 
-// Passport config
+//import Passport config
 require("./config/passport")(passport);
 
 //Connect To Database
 connectDB();
 
-//Using EJS for views
+//set view engine to ejs
 app.set("view engine", "ejs");
 
-//Static Folder
+//Set public directory as static directory 
 app.use(express.static(__dirname + "/public"));
 
-//Body Parsing
+//takes encoded data from form and converts it into js object -> stores it in req.body
 app.use(express.urlencoded({ extended: true }));
+// enables the parsing of JSON data in the application.
 app.use(express.json());
 
-//Logging
+//Logs requests and responses
 app.use(logger("dev"));
 
 //Use forms for put / delete
@@ -46,7 +56,7 @@ app.use(
   })
 );
 
-// Passport middleware
+//Initialize passport and set up passport sessions
 app.use(passport.initialize());
 app.use(passport.session());
 
